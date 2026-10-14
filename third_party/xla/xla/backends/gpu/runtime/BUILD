@@ -1553,12 +1553,10 @@ cuda_library(
         "//xla/stream_executor:device_address_allocator",
         "//xla/stream_executor:stream",
         "@com_google_absl//absl/cleanup",
-        "@com_google_absl//absl/container:flat_hash_map",
         "@com_google_absl//absl/log",
-        "@com_google_absl//absl/log:check",
         "@com_google_absl//absl/status",
-        "@com_google_absl//absl/status:status_macros",
         "@com_google_absl//absl/strings",
+        "@com_google_absl//absl/strings:string_view",
         "@local_config_cuda//cuda:cuda_headers",
         "@raft//:raft_matrix",
     ],
@@ -5437,6 +5435,7 @@ xla_test(
 cc_library(
     name = "device_slot",
     hdrs = ["device_slot.h"],
+    compatible_with = get_compatible_with_portable(),
     visibility = ["//visibility:private"],
     deps = [
         "@com_google_absl//absl/base",
@@ -5450,6 +5449,7 @@ cc_library(
     name = "vector_storage",
     srcs = ["vector_storage.cc"],
     hdrs = ["vector_storage.h"],
+    compatible_with = get_compatible_with_portable(),
     visibility = ["//visibility:private"],
     deps = [
         ":device_slot",
@@ -5473,6 +5473,7 @@ cc_library(
     name = "cow_storage",
     srcs = ["cow_storage.cc"],
     hdrs = ["cow_storage.h"],
+    compatible_with = get_compatible_with_portable(),
     visibility = ["//visibility:private"],
     deps = [
         ":device_slot",
@@ -5502,6 +5503,7 @@ cc_library(
     name = "per_device_state",
     srcs = ["per_device_state.cc"],
     hdrs = ["per_device_state.h"],
+    compatible_with = get_compatible_with_portable(),
     deps = [
         ":cow_storage",
         ":device_slot",
